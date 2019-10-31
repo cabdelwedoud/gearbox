@@ -8,8 +8,8 @@ package electrics.industries;
  */
 public class Gearbox {
 
-	private int speed = 0;
-    private int currentEngineSpeed = 0;
+	private int speed;
+    private int currentEngineSpeed;
 
     /**
      * This method allows calculating the speed based on the engine speed.
@@ -25,26 +25,21 @@ public class Gearbox {
      * 
      * @param engineSpeed
      */
-    public void calculateSpeed(int engineSpeed) {
-        if (speed < 0) {
-            // do nothing!
-            currentEngineSpeed = engineSpeed;
-        }
-        else {
-            if (speed > 0) {
-                if (engineSpeed > 2000) {
-                    speed++;
-                } else if (engineSpeed < 500) {
-                    speed--;
-                }
-            } if (speed > 6) {
-                speed--;
-            } else if (speed < 1) {
-                speed++;
-            }
-            currentEngineSpeed = engineSpeed;
-        }
-    }
+	public void calculateSpeed(int engineSpeed) {
+		if (speed > 0) {
+			if (engineSpeed > 2000) {
+				speed++;
+			} else if (engineSpeed < 500) {
+				speed--;
+			}
+		}
+		if (speed > 6) {
+			speed--;
+		} else if (speed < 1) {
+			speed++;
+		}
+		currentEngineSpeed = engineSpeed;
+	}
 
     /**
 	 * This method gets the last speed passed to the gearbox
