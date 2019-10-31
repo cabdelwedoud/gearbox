@@ -25,18 +25,11 @@ public class Gearbox {
      * 
      * @param engineSpeed
      */
-	public void calculateSpeed(int engineSpeed) {
-		if (speed > 0) {
-			if (engineSpeed > 2000) {
-				speed++;
-			} else if (engineSpeed < 500) {
-				speed--;
-			}
-		}
-		if (speed > 6) {
-			speed--;
-		} else if (speed < 1) {
+    public void calculateSpeed(int engineSpeed) {
+		if (speed == 0 || (engineSpeed > 2000 && speed < 6)) {
 			speed++;
+		} else if (engineSpeed < 500 && speed > 1) {
+			speed--;
 		}
 		currentEngineSpeed = engineSpeed;
 	}
