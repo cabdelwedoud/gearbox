@@ -8,6 +8,11 @@ package electrics.industries;
  */
 public class Gearbox {
 
+	public static final int MAX_ENGINE_SPEED = 2000;
+	public static final int MIN_ENGINE_SPEED = 500;
+	public static final int MAX_SPEED = 6;
+	public static final int MIN_SPEED = 1;
+	
 	private int speed;
     private int currentEngineSpeed;
 
@@ -25,14 +30,17 @@ public class Gearbox {
      * 
      * @param engineSpeed
      */
-    public void calculateSpeed(int engineSpeed) {
-		if (speed == 0 || (engineSpeed > 2000 && speed < 6)) {
+	public void calculateSpeed(int engineSpeed) {
+		if (speed == 0 || (engineSpeed > MAX_ENGINE_SPEED && speed < MAX_SPEED)) {
 			speed++;
-		} else if (engineSpeed < 500 && speed > 1) {
-			speed--;
+		} else {
+			if (engineSpeed < MIN_ENGINE_SPEED && speed > MIN_SPEED) {
+				speed--;
+			}
 		}
 		currentEngineSpeed = engineSpeed;
 	}
+
 
     /**
 	 * This method gets the last speed passed to the gearbox
